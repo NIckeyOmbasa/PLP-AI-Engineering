@@ -37,7 +37,7 @@ AirAware is an open-source dashboard that visualizes real-time and historical ai
 ### Setup Instructions
 ```bash
 # Clone repo
-git clone https://github.com/yourusername/airaware.git
+git clone https://github.com/NIckeyOmbasa/PLP-AI-Engineering/airaware.git
 cd airaware
 
 # Create virtual environment
@@ -87,5 +87,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For any queries or support, please reach out to:
-- Email: [your-email@example.com]
-- GitHub: [github.com/yourusername]
+- Email: [ombasanickey@gmail.com]
+- GitHub: [github.com/NIckeyOmbasa]
