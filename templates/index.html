@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirAware - Urban Air Quality Monitoring Dashboard</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>AirAware</h1>
+            <p>Smarter cities through cleaner air</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- City Selector -->
+        <div class="city-selector">
+            <select id="city-selector">
+                {% for city in cities %}
+                <option value="{{ city }}" {% if city == default_city %}selected{% endif %}>{{ city }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- AQI Display -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Current Air Quality Index</h2>
+                </div>
+                <div id="aqi-display" class="aqi-display">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Air Quality Alerts</h2>
+                </div>
+                <div id="alerts-container">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM2.5 Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">PM2.5 Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pm2.5-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- PM10 Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">PM10 Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pm10-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- O3 Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Ozone (O3) Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="o3-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- NO2 Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Nitrogen Dioxide (NO2) Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="no2-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- SO2 Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Sulfur Dioxide (SO2) Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="so2-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- CO Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Carbon Monoxide (CO) Levels</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="co-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>AirAware - Making air quality data accessible to everyone</p>
+            <p>Data source: <a href="https://openaq.org" target="_blank">OpenAQ</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
